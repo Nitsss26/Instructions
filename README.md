@@ -34,11 +34,42 @@ This key allows the AI (Google Gemini) to read the license plates.
 
 Select your operating system below. Copy the code block, paste it into your terminal, and press **Enter**.
 
+### 🪟 For Windows Users
+
+1\. Search for **PowerShell** in your Start Menu and open it.
+
+2\. Copy the entire block below and paste it → press **Enter**
+
+3\. Paste your **GEMINI_API_KEY** when prompted → press **Enter** (press Enter again if needed)
+
+```bash:disable-run
+
+$API_KEY = Read-Host "Paste your GEMINI_API_KEY here"
+
+if ([string]::IsNullOrWhiteSpace($API_KEY)) { Write-Host "❌ Key cannot be empty" -ForegroundColor Red } else {
+
+    New-Item -ItemType Directory -Force -Path raw_detections, detected_plates, uploads | Out-Null
+
+    docker run -d --name anpr-frontend -p 3000:3000 -e NEXT_PUBLIC_BACKEND_URL=http://localhost:9000 nitti001/anpr-frontend:latest
+
+    docker run -d --name anpr-backend -p 9000:5000 -e GEMINI_API_KEY=$API_KEY -v ${PWD}/raw_detections:/app/raw_detections -v ${PWD}/detected_plates:/app/detected_plates -v ${PWD}/uploads:/app/uploads nitti001/anpr-backend:latest
+
+    Write-Host "✅ System Started Successfully!" -ForegroundColor Green
+
+    Write-Host "🌍 Open this link in your browser: http://localhost:3000"
+
+    docker logs -f anpr-backend
+
+}
+```
+
 ### 🍎 For Mac & 🐧 Linux Users
 
 1\. Open your **Terminal**.
 
-2\. Copy the code below and paste it in:
+2\. Copy the entire block below and paste it → press **Enter**
+
+3\. Paste your **GEMINI_API_KEY** when prompted → press **Enter** (press Enter again if needed)
 
 ```bash:disable-run
 
@@ -62,34 +93,6 @@ docker logs -f anpr-backend;
 
 fi
 ```
-
-### 🪟 For Windows Users
-
-1\. Search for **PowerShell** in your Start Menu and open it.
-
-2\. Copy the code below and paste it in:
-
-```bash:disable-run
-
-$API_KEY = Read-Host "Paste your GEMINI_API_KEY here"
-
-if ([string]::IsNullOrWhiteSpace($API_KEY)) { Write-Host "❌ Key cannot be empty" -ForegroundColor Red } else {
-
-    New-Item -ItemType Directory -Force -Path raw_detections, detected_plates, uploads | Out-Null
-
-    docker run -d --name anpr-frontend -p 3000:3000 -e NEXT_PUBLIC_BACKEND_URL=http://localhost:9000 nitti001/anpr-frontend:latest
-
-    docker run -d --name anpr-backend -p 9000:5000 -e GEMINI_API_KEY=$API_KEY -v ${PWD}/raw_detections:/app/raw_detections -v ${PWD}/detected_plates:/app/detected_plates -v ${PWD}/uploads:/app/uploads nitti001/anpr-backend:latest
-
-    Write-Host "✅ System Started Successfully!" -ForegroundColor Green
-
-    Write-Host "🌍 Open this link in your browser: http://localhost:3000"
-
-    docker logs -f anpr-backend
-
-}
-```
-
 ---
 
 ## 🌐 Step 3: Use the App
@@ -108,16 +111,24 @@ Once the command above is running:
 
 When you are done using the application, run this command to stop and clean up.
 
-### For Mac / Linux:
-
-```bash:disable-run
-docker stop anpr-backend anpr-frontend && docker rm anpr-backend anpr-frontend
-```
-
 ### For Windows (PowerShell):
+
+1\. In the Terminal where logs are running → press **Ctrl + C** (this stops the live logs)
+
+2\. Then run this single command:
 
 ```bash:disable-run
 docker stop anpr-backend anpr-frontend; docker rm anpr-backend anpr-frontend
+```
+
+### For Mac / Linux:
+
+1\. In the Terminal where logs are running → press **Ctrl + C** (this stops the live logs)
+
+2\. Then run this single command:
+
+```bash:disable-run
+docker stop anpr-backend anpr-frontend && docker rm anpr-backend anpr-frontend
 ```
 
 ---
