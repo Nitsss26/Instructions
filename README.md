@@ -16,7 +16,7 @@ Docker is the tool that runs the application on your computer.
 
 * **Tutorial Video:** [How to Install Docker](https://www.youtube.com/watch?v=JBEUKrjbWqg)
 
-* **⚠️ Important:** After installing, open the "Docker Desktop" app and make sure it is running in the background.
+* **⚠️ Important:** After installing, open the "Docker Desktop" app and keep it running in the background at all times while using the app (when done, press Ctrl+C in terminal first, then quit Docker Desktop via the three dots ⋯ in the bottom-left corner → Quit Docker Desktop).
 
 ### 2. Get a FREE Gemini API Key
 
