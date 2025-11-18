@@ -1,6 +1,6 @@
 # 🚗 ANPR System (AI License Plate Detection)
 
-This software uses Artificial Intelligence to detect license plates from video feeds. This guide is designed for everyone---you do not need to be a technical expert to run this!
+This software uses Artificial Intelligence to detect license plates from video feeds. This guide is designed for everyone.
 
 ---
 
