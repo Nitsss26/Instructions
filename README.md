@@ -65,9 +65,11 @@ fi
 
 ### 🪟 For Windows Users
 
-Search for PowerShell in your Start Menu and open it.
+1\. Search for **PowerShell** in your Start Menu and open it.
 
-Copy the code below and paste it in:
+2\. Copy the code below and paste it in:
+
+```bash:disable-run
 
 $API_KEY = Read-Host "Paste your GEMINI_API_KEY here"
 
@@ -86,6 +88,9 @@ if ([string]::IsNullOrWhiteSpace($API_KEY)) { Write-Host "❌ Key cannot be empt
     docker logs -f anpr-backend
 
 }
+```
+
+---
 
 ## 🌐 Step 3: Use the App
 
