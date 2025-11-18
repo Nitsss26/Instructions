@@ -87,26 +87,32 @@ if ([string]::IsNullOrWhiteSpace($API_KEY)) { Write-Host "❌ Key cannot be empt
 
 }
 
-🌐 Step 3: Use the App
+## 🌐 Step 3: Use the App
 
 Once the command above is running:
 
-Open your web browser (Chrome, Safari, etc.).
+* Open your web browser (Chrome, Safari, etc.).
 
-Go to: http://localhost:3000
+* Go to: http://localhost:3000
 
-(Note: The terminal window will show you logs of what the AI is doing. You can minimize it, but don't close it.)
+* (Note: The terminal window will show you logs of what the AI is doing. You can minimize it, but don't close it.)
 
-🛑 Step 4: How to Stop
+---
+
+## 🛑 Step 4: How to Stop
 
 When you are done using the application, run this command to stop and clean up.
 
-For Mac / Linux:
+### For Mac / Linux:
 
+```bash:disable-run
 docker stop anpr-backend anpr-frontend && docker rm anpr-backend anpr-frontend
-
-For Windows (PowerShell):
-
-docker stop anpr-backend anpr-frontend; docker rm anpr-backend anpr-frontend
-
 ```
+
+### For Windows (PowerShell):
+
+```bash:disable-run
+docker stop anpr-backend anpr-frontend; docker rm anpr-backend anpr-frontend
+```
+
+---
