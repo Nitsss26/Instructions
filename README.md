@@ -61,6 +61,7 @@ echo "🌍 Open this link in your browser: http://localhost:3000";
 docker logs -f anpr-backend;
 
 fi
+```
 
 ### 🪟 For Windows Users
 
