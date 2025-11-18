@@ -111,7 +111,7 @@ Once the command above is running:
 
 When you are done using the application, run this command to stop and clean up.
 
-### For Windows (PowerShell):
+### 🪟 For Windows (PowerShell):
 
 1\. In the Terminal where logs are running → press **Ctrl + C** (this stops the live logs)
 
@@ -121,7 +121,7 @@ When you are done using the application, run this command to stop and clean up.
 docker stop anpr-backend anpr-frontend; docker rm anpr-backend anpr-frontend
 ```
 
-### For Mac / Linux:
+### 💻 For Mac / Linux:
 
 1\. In the Terminal where logs are running → press **Ctrl + C** (this stops the live logs)
 
