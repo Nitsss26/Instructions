@@ -42,7 +42,7 @@ Select your operating system below. Copy the code block, paste it into your term
 
 ```bash:disable-run
 
-cd Desktop
+cd Desktop/ANPR
 
 ```
 
@@ -78,7 +78,7 @@ docker logs -f anpr-backend
 
 ```bash:disable-run
 
-cd Desktop
+cd Desktop/ANPR
 
 ```
 
