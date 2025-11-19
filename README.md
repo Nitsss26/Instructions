@@ -74,31 +74,44 @@ docker logs -f anpr-backend
 
 1\. Open your **Terminal**.
 
-2\. Copy the entire block below and paste it → press **Enter**
-
-3\. Paste your **GEMINI_API_KEY** when prompted → press **Enter** (press Enter again if needed)
+2\. Copy the entire block below and paste it into your terminal → press **Enter**
 
 ```bash:disable-run
 
-echo "--- Setup ANPR System ---";
+cd Desktop
 
-mkdir -p raw_detections detected_plates uploads;
+```
 
-read -p "Paste your GEMINI_API_KEY here: " API_KEY;
+3\. Copy the entire block below and paste it into your terminal → press **Enter**
 
-if [ -z "$API_KEY" ]; then echo "❌ Key cannot be empty!"; else
+```bash:disable-run
 
-docker run -d --name anpr-frontend -p 3000:3000 -e NEXT_PUBLIC_BACKEND_URL=http://localhost:9000 nitti001/anpr-frontend:latest;
+mkdir -p raw_detections detected_plates uploads
 
-docker run -d --name anpr-backend -p 9000:5000 -e GEMINI_API_KEY="$API_KEY" -v "$PWD/raw_detections:/app/raw_detections" -v "$PWD/detected_plates:/app/detected_plates" -v "$PWD/uploads:/app/uploads" nitti001/anpr-backend:latest;
+```
 
-echo "✅ System Started Successfully!";
+4\. Copy the entire block below and paste it into your terminal → press **Enter**
 
-echo "🌍 Open this link in your browser: http://localhost:3000";
+```bash:disable-run
 
-docker logs -f anpr-backend;
+docker run -d --name anpr-frontend -p 3000:3000 -e NEXT_PUBLIC_BACKEND_URL=http://localhost:9000 nitti001/anpr-frontend:latest
 
-fi
+```
+
+5\. Copy the entire block below, replace "AIzaSyCOCBpcPbLUTVaaqLnS_XXXXXXXXX" with your actual API key, then paste it into your terminal → press **Enter**
+
+```bash:disable-run
+
+docker run -d --name anpr-backend -p 9000:5000 -e GEMINI_API_KEY=AIzaSyCOCBpcPbLUTVaaqLnS_XXXXXXXXX -v "$PWD/raw_detections:/app/raw_detections" -v "$PWD/detected_plates:/app/detected_plates" -v "$PWD/uploads:/app/uploads" nitti001/anpr-backend:latest
+
+```
+
+6\. Copy the entire block below and paste it → press **Enter**
+
+```bash:disable-run
+
+docker logs -f anpr-backend
+
 ```
 ---
 
@@ -127,6 +140,7 @@ When you are done using the application, run this command to stop and clean up.
 ```bash:disable-run
 docker stop anpr-backend anpr-frontend; docker rm anpr-backend anpr-frontend
 ```
+3\. Quit Docker Desktop via the three dots ⋯ in the bottom-left corner → Quit Docker Desktop
 
 ### 💻 For Mac / Linux:
 
@@ -137,5 +151,8 @@ docker stop anpr-backend anpr-frontend; docker rm anpr-backend anpr-frontend
 ```bash:disable-run
 docker stop anpr-backend anpr-frontend && docker rm anpr-backend anpr-frontend
 ```
+3\. Quit Docker Desktop via the three dots ⋯ in the bottom-left corner → Quit Docker Desktop
 
 ---
+
+
