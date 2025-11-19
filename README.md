@@ -26,7 +26,7 @@ This key allows the AI (Google Gemini) to read the license plates.
 
 * **Tutorial Video:** [How to get your API Key](https://www.youtube.com/watch?v=czN-laeLxr8)
 
-* *Copy your key and keep it ready!*
+* *Copy your api key and keep it ready!*
 
 ---
 
@@ -38,29 +38,36 @@ Select your operating system below. Copy the code block, paste it into your term
 
 1\. Search for **PowerShell** in your Start Menu and open it.
 
-2\. Copy the entire block below and paste it → press **Enter**
-
-3\. Paste your **GEMINI_API_KEY** when prompted → press **Enter** (press Enter again if needed)
+2\. Copy the entire block below and paste it into your terminal → press **Enter**
 
 ```bash:disable-run
 
-$API_KEY = Read-Host "Paste your GEMINI_API_KEY here"
+cd Desktop
 
-if ([string]::IsNullOrWhiteSpace($API_KEY)) { Write-Host "❌ Key cannot be empty" -ForegroundColor Red } else {
+```
 
-    New-Item -ItemType Directory -Force -Path raw_detections, detected_plates, uploads | Out-Null
+3\. Copy the entire block below and paste it into your terminal → press **Enter**
 
-    docker run -d --name anpr-frontend -p 3000:3000 -e NEXT_PUBLIC_BACKEND_URL=http://localhost:9000 nitti001/anpr-frontend:latest
+```bash:disable-run
 
-    docker run -d --name anpr-backend -p 9000:5000 -e GEMINI_API_KEY=$API_KEY -v ${PWD}/raw_detections:/app/raw_detections -v ${PWD}/detected_plates:/app/detected_plates -v ${PWD}/uploads:/app/uploads nitti001/anpr-backend:latest
+docker run -d --name anpr-frontend -p 3000:3000 -e NEXT_PUBLIC_BACKEND_URL=http://localhost:9000 nitti001/anpr-frontend:latest
 
-    Write-Host "✅ System Started Successfully!" -ForegroundColor Green
+```
 
-    Write-Host "🌍 Open this link in your browser: http://localhost:3000"
+4\. Copy the entire block below, replace "AIzaSyCOCBpcPbLUTVaaqLnS_XXXXXXXXX" with your actual API key, then paste it into your terminal → press **Enter**
 
-    docker logs -f anpr-backend
+```bash:disable-run
 
-}
+docker run -d --name anpr-backend -p 9000:5000 -e GEMINI_API_KEY=AIzaSyCOCBpcPbLUTVaaqLnS_XXXXXXXXX -v "$PWD/raw_detections:/app/raw_detections" -v "$PWD/detected_plates:/app/detected_plates" -v "$PWD/uploads:/app/uploads" nitti001/anpr-backend:latest
+
+```
+
+5\. Copy the entire block below and paste it → press **Enter**
+
+```bash:disable-run
+
+docker logs -f anpr-backend
+
 ```
 
 ### 🍎 For Mac & 🐧 Linux Users
