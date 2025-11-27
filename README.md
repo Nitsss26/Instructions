@@ -38,7 +38,7 @@ Select your operating system below. Copy the code block, paste it into your term
 
 1\. Search for **PowerShell** in your Start Menu and open it.
 
-2\. Copy the entire block below and paste it into your terminal → press **Enter**
+2\. Create a folder named ANPR on your Desktop then copy the entire block below and paste it into your terminal → press **Enter**
 
 ```bash:disable-run
 cd Desktop/ANPR
@@ -47,12 +47,12 @@ cd Desktop/ANPR
 3\. Copy the entire block below and paste it into your terminal → press **Enter**
 
 ```bash:disable-run
-docker run -d --name anpr-frontend -p 3000:3000 -e NEXT_PUBLIC_BACKEND_URL=http://localhost:9000 nitti001/anpr-frontend:latest
+docker run -d --name anpr-frontend -p 3000:3000 -e NEXT_PUBLIC_BACKEND_URL=http://localhost:9000 nitti001/anpr-frontend:v2.1
 ```
 
 4\. Copy the entire block below, replace "AIzaSyCOCBpcPbLUTVaaqLnS_XXXXXXXXX" with your actual API key, then paste it into your terminal → press **Enter**
 ```bash:disable-run
-docker run -d --name anpr-backend -p 9000:5000 -e GEMINI_API_KEY=AIzaSyCOCBpcPbLUTVaaqLnS_XXXXXXXXX -v "$PWD/raw_detections:/app/raw_detections" -v "$PWD/detected_plates:/app/detected_plates" -v "$PWD/uploads:/app/uploads" nitti001/anpr-backend:latest
+docker run -d --name anpr-backend -p 9000:5000 -e GEMINI_API_KEY=AIzaSyCOCBpcPbLUTVaaqLnS_XXXXXXXXX -v "$PWD/raw_detections:/app/raw_detections" -v "$PWD/detected_plates:/app/detected_plates" -v "$PWD/uploads:/app/uploads" -v "$PWD/rejected_plates:/app/rejected_plates" nitti001/anpr-backend:v2.1
 ```
 
 5\. Copy the entire block below and paste it → press **Enter**
@@ -65,7 +65,7 @@ docker logs -f anpr-backend
 
 1\. Open your **Terminal**.
 
-2\. Copy the entire block below and paste it into your terminal → press **Enter**
+2\. Create a folder named ANPR on your Desktop then copy the entire block below and paste it into your terminal → press **Enter**
 
 ```bash:disable-run
 cd Desktop/ANPR
@@ -74,19 +74,19 @@ cd Desktop/ANPR
 3\. Copy the entire block below and paste it into your terminal → press **Enter**
 
 ```bash:disable-run
-mkdir -p raw_detections detected_plates uploads
+mkdir -p raw_detections detected_plates uploads rejected_plates
 ```
 
 4\. Copy the entire block below and paste it into your terminal → press **Enter**
 
 ```bash:disable-run
-docker run -d --name anpr-frontend -p 3000:3000 -e NEXT_PUBLIC_BACKEND_URL=http://localhost:9000 nitti001/anpr-frontend:latest
+docker run -d --name anpr-frontend -p 3000:3000 -e NEXT_PUBLIC_BACKEND_URL=http://localhost:9000 nitti001/anpr-frontend:v2.1
 ```
 
 5\. Copy the entire block below, replace "AIzaSyCOCBpcPbLUTVaaqLnS_XXXXXXXXX" with your actual API key, then paste it into your terminal → press **Enter**
 
 ```bash:disable-run
-docker run -d --name anpr-backend -p 9000:5000 -e GEMINI_API_KEY=AIzaSyCOCBpcPbLUTVaaqLnS_XXXXXXXXX -v "$PWD/raw_detections:/app/raw_detections" -v "$PWD/detected_plates:/app/detected_plates" -v "$PWD/uploads:/app/uploads" nitti001/anpr-backend:latest
+docker run -d --name anpr-backend -p 9000:5000 -e GEMINI_API_KEY=AIzaSyCOCBpcPbLUTVaaqLnS_XXXXXXXXX -v "$PWD/raw_detections:/app/raw_detections" -v "$PWD/detected_plates:/app/detected_plates" -v "$PWD/uploads:/app/uploads" -v "$PWD/rejected_plates:/app/rejected_plates" nitti001/anpr-backend:v2.1
 ```
 
 6\. Copy the entire block below and paste it → press **Enter**
